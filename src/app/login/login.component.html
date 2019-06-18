@@ -1,0 +1,10 @@
+<div class="login content" *ngIf="!loggedIn">
+  <h1>Inloggen dude/chick</h1>
+  <div class="container text">
+    With Fitbit: <a href="/api/login">click here</a>
+  </div>
+</div>
+<div class="login content" *ngIf="loggedIn">
+  <h1>Success</h1>
+  <button [routerLink]="'overview'" class="myButton">Look at your progress</button>
+</div>

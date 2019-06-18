@@ -1,0 +1,18 @@
+<div class="content">
+  <h1 class="title">Overview</h1>
+  <div class="grid">
+    <div class="side-bar">
+      <div class="greeting">Logged in as: {{userName}}</div>
+      <img class="avatar" [src]="pictureUrl"/>
+      <button class="myButton" [routerLink]="'../activitiesHeartIntraday'">Beat it</button>
+    </div>
+    <div class="summary">
+      <h2 class="title">Lifetime Performance</h2>
+      <div class="summary-item">Lifetime Steps: {{lifetimeSteps}}</div>
+      <div class="summary-item">Lifetime Distance: {{lifetimeDistance}}</div>
+      <div class="summary-item">Lifetime Floors: {{lifetimeFloors}}</div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,44 @@
+button {
+  margin: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 20% auto;
+  grid-template-rows: auto;
+  justify-content: space-evenly;
+}
+.side-bar {
+  display: grid;
+  grid-template-rows: 20% 200px auto;
+  grid-template-columns: auto;
+  justify-items: center;
+  flex-wrap: wrap;
+
+  border-color: aquamarine;
+  background-color: aquamarine;
+  border-width: 80px;
+  border-radius: 50px;
+}
+
+.greeting {
+  display: flex;
+  margin: 17px;
+  grid-column-start: auto;
+}
+
+.avatar {
+  grid-column-start: auto;
+  height: 150px;
+  width: 150px;
+  border-radius: 75px;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.summary-item {
+  display: flex;
+}
