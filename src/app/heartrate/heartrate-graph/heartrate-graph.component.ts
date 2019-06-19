@@ -6,6 +6,7 @@ import * as d3 from 'd3';
 import { curveBasis } from 'd3';
 import { multiFormat } from './DateFormatter';
 import * as Tone from 'tone';
+import { SampleLibrary } from '../../instruments';
 
 @Component({
   selector: 'app-heartrate-graph',
@@ -120,29 +121,14 @@ export class HeartrateGraphComponent implements OnInit, AfterContentInit {
   }
 
   private playNoise(): void {
-    // create a synth
-    const synth = new Tone.Instrument('cello').toMaster();
 
-    // create an array of notes to be played
-    const notes: string[] = this.data.map(dp => {
-      return new Tone.Frequency(dp['y'], 'midi').toNote();
+    const instruments: Tone.Sampler[] = new SampleLibrary().load({instruments: ['harp']});
+
+    Tone.Buffer['on']('load', () => {
+      // play instrument sound
+      instruments['harp'].toMaster();
+      instruments['harp'].triggerAttack('A3');
     });
-
-    console.dir(notes);
-    // create a new sequence with the synth and notes
-    const synthPart = new Tone.Sequence(
-      (time, note) => {
-        synth.triggerAttackRelease(note, 1, time);
-      },
-      notes,
-      '2n'
-    );
-
-    // Setup the synth to be ready to play on beat 1
-    synthPart.start(0);
-
-    Tone.Transport.start();
-
   }
 }
 
