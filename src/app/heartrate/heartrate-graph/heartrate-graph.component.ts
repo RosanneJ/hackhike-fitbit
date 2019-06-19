@@ -48,9 +48,9 @@ export class HeartrateGraphComponent implements OnInit, AfterContentInit {
     return this.activitiesHeartIntraday.dataset.map((dp) => {
       return {
         x: new Date('1970-01-01T' + dp.time + 'Z'),
-        y: dp.value
+        y: 40
       };
-    });
+    }).slice(0, 5);
   }
 
   private createGraph(): void {
@@ -121,7 +121,7 @@ export class HeartrateGraphComponent implements OnInit, AfterContentInit {
 
   private playNoise(): void {
     // create a synth
-    const synth = new Tone.MembraneSynth().toMaster();
+    const synth = new Tone.Instrument('cello').toMaster();
 
     // create an array of notes to be played
     const notes: string[] = this.data.map(dp => {
@@ -135,7 +135,7 @@ export class HeartrateGraphComponent implements OnInit, AfterContentInit {
         synth.triggerAttackRelease(note, 1, time);
       },
       notes,
-      0.1
+      '2n'
     );
 
     // Setup the synth to be ready to play on beat 1
